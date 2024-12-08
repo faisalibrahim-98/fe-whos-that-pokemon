@@ -1,0 +1,22 @@
+<div class="relative w-60 h-60">
+  <img
+    [src]="silhouetteUrl"
+    alt="Who's that Pokémon?"
+    [ngClass]="{
+      hidden: !result?.name,
+    }"
+  />
+  <div
+    class="absolute inset-0 bg-blue-700 z-1"
+    [ngStyle]="{
+      'mask-image': 'url(' + silhouetteUrl + ')',
+      'mask-size': '240px',
+      '-webkit-mask-image': 'url(' + silhouetteUrl + ')',
+      '-webkit-mask-size': '240px',
+      hidden: result?.name,
+    }"
+    [ngClass]="{
+      hidden: result?.name,
+    }"
+  ></div>
+</div>

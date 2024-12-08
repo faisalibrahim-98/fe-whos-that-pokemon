@@ -1,0 +1,9 @@
+<div
+  class="font-bold text-xl md:text-2xl text-center md:h-16 md:p-4 md:m-6 h-8 p-2 m-4"
+  [ngClass]="{
+    'text-green-500': result?.correct,
+    'text-red-500': !result?.correct,
+  }"
+>
+  {{ message | uppercase}}
+</div>
