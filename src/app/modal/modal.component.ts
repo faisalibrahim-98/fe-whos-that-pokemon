@@ -1,6 +1,7 @@
-import { ModalData } from '@/interfaces';
-import { ModalService } from '@/services/modal.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PokemonService } from '@/services/pokemon.service';
+import { ModalService } from '@/services/modal.service';
+import { ModalData } from '@/interfaces';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,9 +13,16 @@ export class ModalComponent implements OnInit, OnDestroy {
   modalSubscription: Subscription | undefined;
   modalData: ModalData | undefined;
 
-  constructor(private modalService: ModalService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private modalService: ModalService,
+  ) {}
 
   ngOnInit(): void {
+    this.subscribeModal();
+  }
+
+  subscribeModal(): void {
     this.modalSubscription = this.modalService.modalData$.subscribe(
       (data: ModalData) => {
         this.modalData = data;
@@ -22,13 +30,12 @@ export class ModalComponent implements OnInit, OnDestroy {
     );
   }
 
-  closeModal() {
+  closeModal(): void {
+    this.pokemonService.clearResult();
     this.modalService.closeModal();
   }
 
   ngOnDestroy(): void {
-    if (this.modalSubscription) {
-      this.modalSubscription.unsubscribe();
-    }
+    this.modalSubscription?.unsubscribe();
   }
 }

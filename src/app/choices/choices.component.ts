@@ -1,39 +1,71 @@
+import { PokemonService } from '@/services/pokemon.service';
 import { Result } from '@/interfaces';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import {
+  EventEmitter,
+  OnDestroy,
+  Component,
+  OnInit,
+  Output,
+  Input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-choices',
   templateUrl: './choices.component.html',
   styleUrl: './choices.component.css',
 })
-export class ChoicesComponent {
+export class ChoicesComponent implements OnInit, OnDestroy {
   @Input() options: string[] = [];
-  @Input() result: Result | undefined;
 
   @Output() onSelect = new EventEmitter<string>();
 
+  resultSubscription: Subscription | undefined;
   selection: string | undefined;
+  answer: string | undefined;
 
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
+
+  ngOnInit(): void {
+    this.subscribeResult();
+  }
+
+  subscribeResult(): void {
+    this.resultSubscription = this.pokemonService.result$.subscribe(
+      (result: Result | undefined) => {
+        this.answer = !result ? undefined : result.name;
+      },
+    );
+  }
 
   selectAnswer(option: string): void {
     this.selection = option;
     this.onSelect.emit(option);
   }
 
-  correctAnswer(option: string): boolean {
-    return this.result && option === this.result.name ? true : false;
+  btnClasses(option: string): Record<string, boolean> {
+    return {
+      'hover:bg-blue-400': !this.answerExists(),
+      'opacity-80': this.answerExists(),
+      'outline outline-offset-2 outline-green-500':
+        this.isAnswerCorrect(option),
+      'outline outline-offset-2 outline-red-500': this.isAnswerWrong(option),
+    };
   }
 
-  wrongAnswer(option: string): boolean {
-    return this.result &&
-      option !== this.result.name &&
-      option === this.selection
-      ? true
-      : false;
+  isAnswerCorrect(option: string): boolean {
+    return this.answer && option === this.answer ? true : false;
   }
 
-  resultExist(): boolean {
-    return this.result ? true : false;
+  isAnswerWrong(option: string): boolean {
+    return !!this.answer && option !== this.answer && option === this.selection;
+  }
+
+  answerExists(): boolean {
+    return !!this.answer;
+  }
+
+  ngOnDestroy(): void {
+    this.resultSubscription?.unsubscribe();
   }
 }

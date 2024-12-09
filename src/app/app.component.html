@@ -1,4 +1,4 @@
-<div class="bg-black h-screen flex flex-col items-center text-white">
+<div class="h-screen flex flex-col items-center text-white">
   <ngx-spinner
     bdColor="rgba(0, 0, 0, 0.8)"
     size="medium"
@@ -10,29 +10,22 @@
   <app-modal></app-modal>
 
   <app-header></app-header>
-  <app-score [result]="result"></app-score>
+  <app-score (newGame)="onClickNext()"></app-score>
 
-  <app-result [result]="result"></app-result>
+  <app-result></app-result>
 
   @if (pokemon) {
-    <div class="flex flex-col md:flex-row items-center md:mt-20 mt-2">
-      <app-silhouette
-        [silhouetteUrl]="pokemon.image"
-        [result]="result"
-      ></app-silhouette>
+    <div class="flex flex-col md:flex-row items-center">
+      <app-silhouette [silhouetteUrl]="pokemon.image"></app-silhouette>
 
       <div
-        class="flex flex-col items-center w-60 md:w-[30rem] md:ml-36 h-full justify-center"
+        class="flex flex-col items-center w-60 md:w-[30rem] md:ml-36 h-full justify-center md:mt-20 mt-2"
       >
         <app-choices
           [options]="pokemon.names"
-          [result]="result"
           (onSelect)="onClickOption($event)"
         ></app-choices>
-        <app-game-options
-          [result]="result"
-          (next)="onClickNext()"
-        ></app-game-options>
+        <app-game-options (next)="onClickNext()"></app-game-options>
       </div>
     </div>
   }

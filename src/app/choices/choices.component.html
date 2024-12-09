@@ -3,13 +3,8 @@
     <button
       (click)="selectAnswer(option)"
       class="font-bold md:text-xl py-2 px-4 rounded w-40 md:w-48 m-4 bg-white text-black"
-      [disabled]="resultExist()"
-      [ngClass]="{
-        'hover:bg-blue-400': !resultExist(),
-        'opacity-80': resultExist(),
-        'outline outline-offset-2 outline-green-500': correctAnswer(option),
-        'outline outline-offset-2 outline-red-500': wrongAnswer(option),
-      }"
+      [disabled]="answerExists()"
+      [ngClass]="btnClasses(option)"
     >
       {{ option[0] | uppercase }}{{ option.slice(1) }}
     </button>

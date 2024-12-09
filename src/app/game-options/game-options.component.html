@@ -1,13 +1,8 @@
 <button
   (click)="onClickNext()"
   class="bg-gray-100 text-black font-bold rounded py-2 px-4 w-80 md:w-96 mt-16"
-  [disabled]="!result"
-  [ngClass]="{
-    'bg-gray-200': !result,
-    'text-gray-600': !result,
-    'opacity-50': !result,
-    'hover:bg-amber-500': result
-  }"
+  [disabled]="!resultExists"
+  [ngClass]="btnClasses()"
 >
   Next
 </button>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ModalData } from '@/interfaces';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class ModalService {
     body: '',
   };
 
-  public modalData$ = new BehaviorSubject<ModalData>(this.default);
+  public modalData$ = new Subject<ModalData>();
 
   constructor() {}
 

@@ -7,11 +7,11 @@ import { ResultComponent } from '@/result/result.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ScoreComponent } from '@/score/score.component';
 import { provideHttpClient } from '@angular/common/http';
+import { ModalComponent } from '@/modal/modal.component';
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule } from '@angular/core';
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { ModalComponent } from './modal/modal.component';
     ChoicesComponent,
     HeaderComponent,
     ResultComponent,
+    ModalComponent,
     ScoreComponent,
     AppComponent,
-    ModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
