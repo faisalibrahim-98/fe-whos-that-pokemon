@@ -1,6 +1,7 @@
 <div class="flex flex-wrap justify-center">
   @for (option of options; track $index) {
     <button
+      [id]="'choice-'+$index"
       (click)="selectAnswer(option)"
       class="font-bold md:text-xl py-2 px-4 rounded w-40 md:w-48 m-4 bg-white text-black"
       [disabled]="answerExists()"

@@ -1,27 +1,33 @@
 # FeWhosThatPokemon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+This is the frontend of the game whos that pokemon which is developed by Faisal ibrahim.
+This is built using Anuglar 18 and tailwindCSS.
+The application has a single page which shows the overlay of the pokemon and 4 chocies on the right.
+The next button is initially disabled.
+The player can check their score and the number of the question that they are on.
+The score and the question number are stroed in the browsers localstorage and are maintained on refresh.
+When the user slects an option from th pokemon name then the pokemon is revealed. If the right option is outlined green.
+If the user selects the wrong option then that wil be outlined red.
+There is also a success or failure message displyed below the score.
+When the user answers 10 pokemon names then the game resets and a dalog opens up to show the score of the user and indicate the completion of the game.
 
-## Development server
+# How to Initilise
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. clone the repo.
+2. Make sure you have node installed.
+3. Run command 'npm i'.
+4. Run command 'npm run start' to start the server on loclahost:4200.
 
-## Code scaffolding
+# Unit Tests
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. To run unit test cases in terminal, run command 'npm run test-ci'
+2. To run unit test cases in browser, run command 'npm run test'.
+3. To run the coverage of the unit test cases, run command 'npm run test-coverage'.
 
-## Build
+# E2E Tests
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. To run Cypress E2E test cases, run command 'npm run cypress:open'.
 
-## Running unit tests
+# ESLint
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. To run linting on the entire app run command 'npm run eslint'
