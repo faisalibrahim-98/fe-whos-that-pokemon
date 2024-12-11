@@ -31,3 +31,16 @@
 # ESLint
 
 1. To run linting on the entire app run command 'npm run eslint'
+
+# Screenshots
+- Main Page
+  ![screenshot](screenshots/MainPage.png)
+
+- Correct Answer
+  ![screenshot](screenshots/CorrectAnswer.png)
+
+- Wrong Answer
+  ![screenshot](screenshots/WrongAnswer.png)
+
+- Structure
+  ![screenshot](screenshots/structure/Components.JPG)
