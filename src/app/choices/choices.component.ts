@@ -45,7 +45,7 @@ export class ChoicesComponent implements OnInit, OnDestroy {
 
   btnClasses(option: string): Record<string, boolean> {
     return {
-      'hover:bg-blue-400': !this.answerExists(),
+      'hover:bg-[#73C2FB]': !this.answerExists(),
       'opacity-80': this.answerExists(),
       'outline outline-offset-2 outline-green-500':
         this.isAnswerCorrect(option),

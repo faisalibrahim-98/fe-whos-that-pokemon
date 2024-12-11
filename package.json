@@ -10,7 +10,7 @@
     "test-ci": "ng test --watch=false --browsers=ChromeHeadless",
     "test-coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "eslint": "eslint **/*.ts",
-    "cypress:open": "cypress open"
+    "cypress": "cypress open"
   },
   "private": true,
   "dependencies": {

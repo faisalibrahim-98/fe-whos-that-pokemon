@@ -1,3 +1,5 @@
+/// <reference types= "cypress" />
+
 describe('Pokemon Cypress Spec', () => {
   beforeEach(() => {
     cy.visit('/');

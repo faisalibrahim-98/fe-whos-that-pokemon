@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PokemonService } from '@/services/pokemon.service';
 import { provideHttpClient } from '@angular/common/http';
 import { ScoreComponent } from '@/score/score.component';
 import { ModalService } from '@/services/modal.service';
-import { PokemonService } from '@/services/pokemon.service';
 import { mockPokemon } from '@/mock';
 
 describe('ScoreComponent', () => {

@@ -40,8 +40,10 @@ export class ScoreComponent implements OnInit, OnDestroy {
   }
 
   subscribePokemon(): void {
+    /* First value is skipped because when the applciation loads app
+    component gets the data, on which this code should not execute. */
     this.pokemonSubscription = this.pokemonService.pokemon$
-      .pipe(skip(1))
+      .pipe(skip(1)) 
       .subscribe(() => {
         this.state.question += 1;
 
@@ -66,7 +68,14 @@ export class ScoreComponent implements OnInit, OnDestroy {
 
   initState(): void {
     const value = this.localstorageService.getItem(this.key);
-    if (value) this.state = JSON.parse(value);
+    if (value) {
+      this.state = JSON.parse(value);
+      if (this.state.question === 11) {
+        this.showCompleteModal();
+        this.resetState();
+        this.state.question += 1;
+      }
+    }
   }
 
   updateScore(result: Result): void {
@@ -78,7 +87,7 @@ export class ScoreComponent implements OnInit, OnDestroy {
       showModal: true,
       title: `Score: ${this.state.score}`,
       close: 'Play Again',
-      body: `Congratulations! You have completed the game`,
+      body: `Congratulations! You have completed the game!`,
     };
 
     this.modalService.showModal(modalData);
