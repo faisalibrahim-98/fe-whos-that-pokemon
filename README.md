@@ -26,7 +26,7 @@
 
 # E2E Tests
 
-1. To run Cypress E2E test cases, run command 'npm run cypress:open'.
+1. To run Cypress E2E test cases, run command 'npm run cypress'.
 
 # ESLint
 
